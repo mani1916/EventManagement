@@ -10,8 +10,8 @@ namespace EventManagement.Services
     {
         Task<bool> CreateEventAsync(Event record);
         Task<IEnumerable<Event>> GetAllEventsAsync();
-        Task<List<Event>> GetPastEventsAsync();
-        Task<List<Event>> GetFutureEventsAsync();
+        Task<IEnumerable<Event>> GetPastEventsAsync();
+        Task<IEnumerable<Event>> GetFutureEventsAsync();
         Task DeleteAllEventsAsync();
     }
 }

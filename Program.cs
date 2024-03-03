@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using EventManagement.Configurations;
 using EventManagement.Repositories;
 using EventManagement.Services;
 using Microsoft.EntityFrameworkCore;
@@ -14,10 +15,11 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IEventServices, EventSerivces>();
 builder.Services.AddTransient<IAttendeeService, AttendeeService>();
-builder.Services.AddTransient<IAttendeeRepository,AttendeeRepository>();
+builder.Services.AddTransient<IAttendeeRepository, AttendeeRepository>();
 builder.Services.AddTransient(typeof(IEventRepository<>), typeof(EventRepository<>));
 builder.Services.AddTransient(typeof(IEventManagementService<>), typeof(EventManagementService<>));
 builder.Services.AddScoped(typeof(IUploadHandler<>), typeof(UploadHandler<>));
+// builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
 builder.Services.AddDbContext<EventDbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"));

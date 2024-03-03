@@ -23,6 +23,21 @@ namespace EventManagement.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
+       /// <summary>
+       /// This C# function asynchronously creates a user using a file input and handles exceptions by
+       /// logging errors.
+       /// </summary>
+       /// <param name="IFormFile">`IFormFile` is an interface used in ASP.NET Core to represent a file
+       /// sent with the HttpRequest. It provides properties and methods to access information about the
+       /// file such as the file name, content type, and content. In the provided code snippet, the
+       /// `CreateUser` method takes an `</param>
+       /// <returns>
+       /// The `CreateUser` method is returning an `ActionResult<bool>`. Inside the method, it is trying
+       /// to create a user asynchronously by calling the `_userService.CreateUserAsync(file)` method.
+       /// If successful, it returns the result of the creation action using `CreatedAtAction` with the
+       /// name of the `CreateUser` method. If an exception occurs during the user creation process, it
+       /// catches the exception,
+       /// </returns>
         public async Task<ActionResult<bool>> CreateUser(IFormFile file)
         {
             try

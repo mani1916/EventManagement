@@ -17,6 +17,18 @@ namespace EventManagement.Services
             _eventManagementService = eventManagementService;
         }
 
+        /// <summary>
+        /// This C# async function creates attendees from an uploaded file, checking for conflicts and
+        /// existing users/events, and returning a list of failed attendees.
+        /// </summary>
+        /// <param name="IFormFile">`IFormFile` is an interface representing a file sent with the
+        /// HttpRequest. It allows you to access the file content, file name, content type, and other
+        /// properties of the uploaded file. In the provided code snippet, `IFormFile` is used to
+        /// receive a file uploaded by the user</param>
+        /// <returns>
+        /// The method `CreateAttendeeAsync` returns a `Task<List<Attendee>>`, which is a task
+        /// representing a list of attendees that failed to be created.
+        /// </returns>
         public async Task<List<Attendee>> CreateAttendeeAsync(IFormFile file)
         {
             try
@@ -28,22 +40,22 @@ namespace EventManagement.Services
 
                 foreach (Attendee attendee in attendees)
                 {
-                    // Check if user exists
-                    // System.Console.WriteLine(attendee.UserId);
-                    bool userExists = await _eventManagementService.UserExistsAsync(attendee.UserId);
-                    if (!userExists)
-                    {
-                        Console.WriteLine($"User with ID {attendee.UserId} does not exist. Skipping.");
-                        failedAttendees.Add(attendee);
-                        continue;
-                    }
-                    bool eventExists = await _eventManagementService.EventExistsAsync(attendee.EventId);
-                    if (!eventExists)
-                    {
-                        Console.WriteLine($"Event with ID {attendee.EventId} does not exist. Skipping.");
-                        failedAttendees.Add(attendee);
-                        continue;
-                    }
+                    // // Check if user exists
+                    // // System.Console.WriteLine(attendee.UserId);
+                    // bool userExists = await _eventManagementService.UserExistsAsync(attendee.UserId);
+                    // if (!userExists)
+                    // {
+                    //     Console.WriteLine($"User with ID {attendee.UserId} does not exist. Skipping.");
+                    //     failedAttendees.Add(attendee);
+                    //     continue;
+                    // }
+                    // bool eventExists = await _eventManagementService.EventExistsAsync(attendee.EventId);
+                    // if (!eventExists)
+                    // {
+                    //     Console.WriteLine($"Event with ID {attendee.EventId} does not exist. Skipping.");
+                    //     failedAttendees.Add(attendee);
+                    //     continue;
+                    // }
                     bool conflict = await _eventManagementService.GetConflictsAsync(attendee.EventId, attendee.UserId, attendee.EventDate);
                     if (conflict)
                     {
@@ -68,6 +80,14 @@ namespace EventManagement.Services
         }
 
 
+       /// <summary>
+       /// This C# async method retrieves all attendees from an event management service and handles any
+       /// exceptions that occur.
+       /// </summary>
+       /// <returns>
+       /// The `GetAllAttendeesAsync` method returns a task that will eventually yield an enumerable
+       /// collection of `Attendee` objects asynchronously.
+       /// </returns>
         public async Task<IEnumerable<Attendee>> GetAllAttendeesAsync()
         {
             try
@@ -81,6 +101,10 @@ namespace EventManagement.Services
             }
         }
 
+        /// <summary>
+        /// The DeleteAllAttendeesAsync method asynchronously deletes all attendees and handles any
+        /// exceptions by logging the error message.
+        /// </summary>
         public async Task DeleteAllAttendeesAsync()
         {
             try

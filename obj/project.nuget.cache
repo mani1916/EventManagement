@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "jQ1A/g7aKOadev7zUWiEv1dcIfE/Y2vy0esNPvazbBS1pasnQVLcr5AyxMBEmhfBgFai3j3C1sX0aA+aIPDBkg==",
+  "dgSpecHash": "QV6UntNDps2wFuLITZ3X4xSMsd6lQULFIqD5mTBn45trFGyGoYqLgZTjUpffn/pvwcAp0TdazVnMmO870GDGRQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\ManikandanLakshmanan\\Documents\\Assignments\\EventManagement\\EventManagement.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\ManikandanLakshmanan\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\ManikandanLakshmanan\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\ManikandanLakshmanan\\.nuget\\packages\\bouncycastle.cryptography\\2.2.1\\bouncycastle.cryptography.2.2.1.nupkg.sha512",
     "C:\\Users\\ManikandanLakshmanan\\.nuget\\packages\\closedxml\\0.102.2\\closedxml.0.102.2.nupkg.sha512",
     "C:\\Users\\ManikandanLakshmanan\\.nuget\\packages\\documentformat.openxml\\2.16.0\\documentformat.openxml.2.16.0.nupkg.sha512",
@@ -141,5 +143,16 @@
     "C:\\Users\\ManikandanLakshmanan\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\ManikandanLakshmanan\\.nuget\\packages\\xlparser\\1.5.2\\xlparser.1.5.2.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Detected package version outside of dependency constraint: AutoMapper.Extensions.Microsoft.DependencyInjection 12.0.1 requires AutoMapper (= 12.0.1) but version AutoMapper 13.0.1 was resolved.",
+      "libraryId": "AutoMapper",
+      "targetGraphs": [
+        "net6.0"
+      ]
+    }
+  ]
 }
